@@ -4,6 +4,9 @@ public class Money {
     public Money(int amount) {
         this.amount = amount;
     }
+    
+    @Override
+    public String currency() { return "USD"; }
 
     @Override
     public boolean equals(Object object) {

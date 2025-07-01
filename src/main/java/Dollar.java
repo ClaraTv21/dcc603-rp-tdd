@@ -1,11 +1,11 @@
-public class Dollar {
-  private int amount;
+public class Dollar extends Money {
 
-  Dollar(int amount) {
-    this.amount = amount;
-  }
-  Money times(int multiplier) {
-    return new Dollar(amount * multiplier);
-}
+    public Dollar(int amount) {
+        super(amount);
+    }
 
+    @Override
+    public Money times(int multiplier) {
+        return new Dollar(amount * multiplier);
+    }
 }
