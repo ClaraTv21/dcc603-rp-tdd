@@ -1,20 +1,32 @@
 public class Money {
-    protected int amount;
+  protected int amount;
+  protected String currency;
 
-    public Money(int amount) {
-        this.amount = amount;
-    }
-    
-    @Override
-    public String currency() { return "USD"; }
+  public Money(int amount, String currency) {
+    this.amount = amount;
+    this.currency = currency;
+  }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == null) return false;
-        if (!(object instanceof Money)) return false;
+  public static Money dollar(int amount) {
+    return new Money(amount, "USD");
+  }
+  public static Money franc(int amount) {
+    return new Money(amount, "CHF");
+  }
 
-        Money money = (Money) object;
-        return amount == money.amount
-                && this.getClass().equals(money.getClass());
-    }
+  public Money times(int multiplier) {
+    return new Money(amount * multiplier, currency);
+  }
+
+  public String currency() {
+    return currency;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (!(object instanceof Money)) return false;
+    Money money = (Money) object;
+    return amount == money.amount
+        && currency.equals(money.currency);
+  }
 }
